@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2AEB20C7-A498-480A-A8E7-6DEF4D731274}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>WarpDrive</RootNamespace>
+    <AssemblyName>WarpDrive</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <CustomCommands>
+      <CustomCommands>
+        <Command type="AfterBuild" command="cp ${TargetFile} /home/realgecko/Development/KSP/GameData/${ProjectName}" />
+        <Command type="AfterBuild" command="cp ${TargetFile} ${SolutionDir}/GameData/${ProjectName}" />
+        <Command type="Execute" command="/usr/bin/wine /home/realgecko/Development/KSP/KSP_x64.exe" workingdir="/home/realgecko/Development/KSP/" />
+      </CustomCommands>
+    </CustomCommands>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\KSP\KSP_Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\..\KSP\KSP_Data\Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\..\KSP\KSP_Data\Managed\UnityEngine.UI.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="AlcubierreDrive.cs" />
+    <Compile Include="Warpotron9000.cs" />
+    <Compile Include="ToolbarWrapper.cs" />
+    <Compile Include="UIFramework\Core.cs" />
+    <Compile Include="UIFramework\Layout.cs" />
+    <Compile Include="UIFramework\Offsets.cs" />
+    <Compile Include="UIFramework\Palette.cs" />
+    <Compile Include="UIFramework\Styles.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="Utils.cs" />
+    <Compile Include="WarpFX.cs" />
+    <Compile Include="WarpPlane.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="UIFramework\" />
+  </ItemGroup>
+</Project>
