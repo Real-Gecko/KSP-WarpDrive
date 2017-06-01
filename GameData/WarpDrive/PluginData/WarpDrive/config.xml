@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <rect name="windowRect">
+        <xmin>144</xmin>
+        <xmax>444</xmax>
+        <ymin>87</ymin>
+        <ymax>615</ymax>
+    </rect>
+    <bool name="useToolbar">1</bool>
+    <bool name="maximized">1</bool>
+</config>
