@@ -77,6 +77,9 @@ namespace WarpDrive
 			if (String.IsNullOrEmpty (techid))
 				return false;
 
+			if (HighLogic.CurrentGame.Mode == Game.Modes.SANDBOX)
+				return true;
+
 			ProtoTechNode techstate = ResearchAndDevelopment.Instance.GetTechState (techid);
 			if (techstate != null)
 				return (techstate.state == RDTech.State.Available);

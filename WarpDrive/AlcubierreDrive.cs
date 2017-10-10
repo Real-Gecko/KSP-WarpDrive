@@ -116,12 +116,12 @@ namespace WarpDrive
 				}
 			}
 
+			if (isSlave)
+				return;
+
 			fx = new WarpFX(this);
 			if (inWarp)
 				fx.StartFX ();
-
-			if (isSlave)
-				return;
 
 			if (serialisedWarpVector != null)
 				warpVector = ConfigNode.ParseVector3D (serialisedWarpVector);
@@ -152,6 +152,9 @@ namespace WarpDrive
 		}
 
 		public override void OnUpdate() {
+			if (isSlave || HighLogic.LoadedSceneIsEditor)
+				return;
+
 			if (inWarp)
 				fx.FrameUpdate ();
 			// Fuck this API
